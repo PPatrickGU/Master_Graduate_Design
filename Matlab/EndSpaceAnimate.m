@@ -52,9 +52,9 @@ for n=1:1:num
     [I,map]=rgb2ind(I,256);
     % Write to the GIF File 
     if n == 1
-        imwrite(I,map,'EndSpaceAnimate.gif','gif', 'Loopcount',inf,'DelayTime',0.1);
+        imwrite(I,map,'./image/EndSpaceAnimate.gif','gif', 'Loopcount',inf,'DelayTime',0.1);
     else
-        imwrite(I,map,'EndSpaceAnimate.gif','gif','WriteMode','append','DelayTime',0.1);
+        imwrite(I,map,'./image/EndSpaceAnimate.gif','gif','WriteMode','append','DelayTime',0.1);
     end
     
     

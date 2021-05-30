@@ -32,9 +32,9 @@ for i = 1:1:length(q)
     [I,map]=rgb2ind(I,256);
     % Write to the GIF File 
     if i == 1
-        imwrite(I,map,'TrajGenLine.gif','gif', 'Loopcount',inf,'DelayTime',0.2);
+        imwrite(I,map,'./image/TrajGenLine.gif','gif', 'Loopcount',inf,'DelayTime',0.1);
     else
-        imwrite(I,map,'TrajGenLine.gif','gif','WriteMode','append','DelayTime',0.2);
+        imwrite(I,map,'./image/TrajGenLine.gif','gif','WriteMode','append','DelayTime',0.1);
     end
     hold on
  end
