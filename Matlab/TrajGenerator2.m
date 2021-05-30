@@ -1,3 +1,7 @@
+clear;
+clc;
+close all;
+
 %ini_robot
 
 q0=[0 0 0 0 0 0 0];
@@ -110,7 +114,7 @@ for i=1:1:51
 
 atj=Rbt.fkine(sqtraj1(i,:));
 
-jta=transpose(atj);
+jta=transpose(atj.T);
 
 JTA(i,:)=jta(4,1:3);
 
@@ -128,7 +132,7 @@ for i=1:1:51
 
 atj2=Rbt.fkine(sqtraj2(i,:));
 
-jta2=transpose(atj2);
+jta2=transpose(atj2.T);
 
 JTA2(i,:)=jta2(4,1:3);
 
@@ -146,7 +150,7 @@ for i=1:1:51
 
 atj3=Rbt.fkine(sqtraj3(i,:));
 
-jta3=transpose(atj3);
+jta3=transpose(atj3.T);
 
 JTA3(i,:)=jta3(4,1:3);
 
@@ -164,7 +168,7 @@ for i=1:1:51
 
 atj4=Rbt.fkine(sqtraj4(i,:));
 
-jta4=transpose(atj4);
+jta4=transpose(atj4.T);
 
 JTA4(i,:)=jta4(4,1:3);
 
@@ -182,7 +186,7 @@ for i=1:1:51
 
 atj5=Rbt.fkine(sqtraj5(i,:));
 
-jta5=transpose(atj5);
+jta5=transpose(atj5.T);
 
 JTA5(i,:)=jta5(4,1:3);
 
@@ -200,7 +204,7 @@ for i=1:1:51
 
 atj6=Rbt.fkine(sqtraj6(i,:));
 
-jta6=transpose(atj6);
+jta6=transpose(atj6.T);
 
 JTA6(i,:)=jta6(4,1:3);
 
@@ -218,22 +222,20 @@ for i=1:1:51
 
 atj7=Rbt.fkine(sqtraj7(i,:));
 
-jta7=transpose(atj7);
+jta7=transpose(atj7.T);
 
 JTA7(i,:)=jta7(4,1:3);
 
 jta7=JTA7;
 
-plot2(jta7(i,:),'r.')
+% plot2(jta7(i,:),'r.')
 
 Rbt.plot(sqtraj7(i,:))
 
 plot2(JTA7,'b')
 
 end
-
-2、第二部分轨迹生成
-
+% % 
 qsq1=[0.46088 0.37699 0 1.31 0 1.4451 0];
 
 qsq2=[.81681 0.56549 0 1.0681 0 1.2566 0 ];
@@ -278,7 +280,7 @@ for i=1:1:51
 
 atj=Rbt.fkine(sqtraj1(i,:));
 
-jta=transpose(atj);
+jta=transpose(atj.T);
 
 JTA(i,:)=jta(4,1:3);
 
