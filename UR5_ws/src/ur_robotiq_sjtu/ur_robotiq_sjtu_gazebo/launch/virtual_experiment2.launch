@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="debug" default="false"/>
+  <arg name="rviz_config" default="$(find ur_robotiq_sjtu_gazebo)/config/ur_robotiq_sjtu.rviz"/>
+  <arg name="limited" default="false" doc="If true, limits joint range [-PI, PI] on all joints." />
+  
+  <!--arg name="robot_description_file" default="$(find ur_description)/launch/ur3_upload.launch" doc="Robot description launch file."/-->
+  
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="$(find ur_robotiq_sjtu_gazebo)/worlds/virtual_experiment2.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+ 
+  <include file="$(find ur_robotiq_sjtu_description)/launch/ur_robotiq_sjtu_upload.launch">
+    <arg name="limited" value="$(arg limited)"/>
+  </include>
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -z 0.1" respawn="false" output="screen" />
+  
+  <include file="$(find ur_gazebo)/launch/controller_utils.launch"/>
+
+  <rosparam file="$(find ur_robotiq_sjtu_gazebo)/controller/ur_robotiq_sjtu_controller.yaml" command="load"/>
+  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller gripper_controller" respawn="false" output="screen"/>
+
+  <include file="$(find ur_robotiq_sjtu_moveit_config)/launch/move_group.launch">
+    <arg name="debug" default="$(arg debug)" />
+  </include>
+  <include file="$(find ur_robotiq_sjtu_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="debug" default="$(arg debug)" />
+    <arg name="rviz_config" default="$(arg rviz_config)" />
+
+    
+  </include>
+
+</launch>
