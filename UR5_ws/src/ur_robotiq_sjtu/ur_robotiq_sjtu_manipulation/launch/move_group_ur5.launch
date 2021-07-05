@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <include file="$(find ur_robotiq_sjtu_moveit_config)/launch/demo.launch"/>
+  <node name="move_group_ur5" pkg="ur_robotiq_sjtu_manipulation" type="move_test_rviz.py" respawn="false" output="screen"/>
+
+
+</launch>
