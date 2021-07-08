@@ -1,7 +1,7 @@
 # Simulation settings for using moveit_sim_controllers
 moveit_sim_hw_interface:
-  joint_model_group: arm
-  joint_model_group_pose: down
+  joint_model_group: gripper
+  joint_model_group_pose: open
 # Settings for ros_control_boilerplate control loop
 generic_hw_control_loop:
   loop_hz: 300
@@ -39,4 +39,50 @@ controller_list:
     default: True
     type: FollowJointTrajectory
     joints:
-      - gripper_finger1_joint
+      gripper_finger1_joint
+/gazebo_ros_control:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - shoulder_pan_joint
+    - shoulder_lift_joint
+    - elbow_joint
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint
+    - gripper_finger1_joint
+  pid_gains:
+    shoulder_pan_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    shoulder_lift_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    elbow_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    wrist_1_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    wrist_2_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    wrist_3_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    gripper_finger1_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

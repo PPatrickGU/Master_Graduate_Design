@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-# Rviz UR5
 # Control UR5 by using MoveIt API
 
 from math import pi
