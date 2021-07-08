@@ -25,6 +25,7 @@ plot3(x,y,z,'b')
 
 % 机械臂运动逐帧演示并保存成gif
 for i = 1:1:length(q)  
+%     ur5.plot3d(q(i,:),'path','./UR5'); 
     ur5.plot(q(i,:)); 
     
     F=getframe(gcf);

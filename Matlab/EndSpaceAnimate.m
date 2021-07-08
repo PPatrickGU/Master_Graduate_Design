@@ -20,11 +20,11 @@ mdl_ur5
 %% 参数
 %关节角限位
 q1_s=-180; q1_end=180;
-q2_s=0;    q2_end=90;
-q3_s=-90;  q3_end=90;
+q2_s=-180;    q2_end=180;
+q3_s=-180;  q3_end=180;
 q4_s=-180; q4_end=180;
-q5_s=-90;  q5_end=90;
-q6_s=0;    q6_end=360;
+q5_s=-180;  q5_end=180;
+q6_s=-180;    q6_end=180;
     
  %计算点数
 num=250;
@@ -42,6 +42,7 @@ figure('name','End Space')
 for n=1:1:num
     
     qq = [q1_rand(n) q2_rand(n) q3_rand(n) q4_rand(n) q5_rand(n) q6_rand(n)]*deg;
+%     ur5.plot3d(qq,'path','./UR5' );%动画显示
     ur5.plot(qq);%动画显示
     hold on;
     Mricx=ur5.fkine(qq);

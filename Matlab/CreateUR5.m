@@ -29,4 +29,5 @@ close all;
 
 %%使用自带的模型
 mdl_ur5
-ur5.teach;
+% ur5.teach;
+ur5.plot3d([0 0 0 0 0 0],'path','./UR5')
