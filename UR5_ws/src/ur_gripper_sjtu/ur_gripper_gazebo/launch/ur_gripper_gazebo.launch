@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="limited" default="false" doc="If true, limits joint range [-PI, PI] on all joints." />
+  <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" /> 
+  <!-- <arg name="transmission_hw_interface" default="PositionJointInterface" />  -->
+  
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="$(find ur_gripper_gazebo)/worlds/virtual_experiment.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <!-- send robot urdf to param server --> 
+  <include file="$(find ur_gripper_description)/launch/ur_gripper_upload.launch">  
+    <arg name="limited" value="$(arg limited)"/>
+  </include>
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -z 0.1" respawn="false" output="screen" />
+  
+  <include file="$(find ur_gripper_gazebo)/launch/controller_utils.launch"/>  
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <!-- joint_state_controller -->
+  <rosparam file="$(find ur_gripper_gazebo)/config/ur_gripper_controller.yaml" command="load"/>
+  <node name="arm_controller_spawner" pkg="controller_manager" type="spawner" args="arm_controller" respawn="false" output="screen"/>
+  <node name="gripper_controller_spawner" pkg="controller_manager" type="spawner" args="gripper_controller" respawn="false" output="screen" /> 
+
+
+
+</launch>

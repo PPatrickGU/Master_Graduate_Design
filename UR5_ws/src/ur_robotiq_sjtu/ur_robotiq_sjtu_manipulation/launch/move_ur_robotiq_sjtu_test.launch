@@ -1,6 +1,0 @@
-<launch>
-
-  <node name="move_test_rviz" pkg="ur_robotiq_sjtu_manipulation" type="move_test_rviz.py" respawn="false" output="screen"/>
-
-
-</launch>

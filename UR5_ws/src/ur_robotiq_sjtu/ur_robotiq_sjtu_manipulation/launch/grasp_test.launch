@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-  <include file="$(find ur_robotiq_sjtu_gazebo)/launch/ur_robotiq_kinect_sjtu_gazebo.launch"/>
-  <node name="show_img" pkg="ur_robotiq_sjtu_manipulation" type="show_img.py" respawn="false" output="screen"/>
-
-  <node name="grasp_test" pkg="ur_robotiq_sjtu_manipulation" type="grasp_test.py" respawn="false" output="screen"/>
-
-</launch>
