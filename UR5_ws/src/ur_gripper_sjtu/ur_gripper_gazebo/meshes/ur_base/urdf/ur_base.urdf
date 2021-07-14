@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="ur_base">
+ 
+  <link name="dummy">
+   </link>
+
+  <link
+    name="ur_base_link">
+    <inertial>
+      <origin
+        xyz="3.52338388846441E-17 0.101372590888575 5.22905433675093E-17"
+        rpy="0 0 0" />
+      <mass
+        value="61.6417018603535" />
+      <inertia
+        ixx="4.57197869099113"
+        ixy="2.48932818802672E-16"
+        ixz="-9.33453643233855E-16"
+        iyy="5.99146162894369"
+        iyz="4.85088474749273E-16"
+        izz="4.57197869099113" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ur_base/meshes/ur_base_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ur_base/meshes/ur_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+   <joint name="dummy_joint" type="fixed">
+     <parent link="dummy"/>
+     <child link="ur_base_link"/>
+   </joint>
+</robot>

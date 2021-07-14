@@ -28,68 +28,18 @@
   <!--kinect V2-->
   <xacro:include filename="$(find common_sensors)/urdf/sensors/kinect2.urdf.xacro" />
   <xacro:kinect2 parent="world" name="KinectSensor2">
-    <origin xyz="0.85 0 1.5" rpy="0 ${pi/2} 0" />
+    <origin xyz="0.5 0 1.3" rpy="0 ${pi/2} 0" />
   </xacro:kinect2>
 
- <!-- ur base -->
-  <link name="ur_base_link">
-    <inertial>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <!--mass
-        value="61.642" /-->
-      <mass
-        value="1000" />  
-      <inertia
-        ixx="4.572"
-        ixy="0"
-        ixz="0"
-        iyy="5.991"
-        iyz="0"
-        izz="4.572" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0.144"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ur_base/meshes/ur_base.dae" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0.144"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://ur_base/meshes/ur_base.STL" />
-      </geometry>
-    </collision>
-  </link>
-
-  <!-- Used for fixing ur_base to Gazebo 'world' -->
+  <!-- Used for fixing ur to Gazebo 'world' -->
   <link name="world" />
   <joint name="world_joint" type="fixed">
     <parent link="world" />
-    <child link = "ur_base_link" />
+    <child link = "base_link" />
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
   </joint>
 
-  <!-- Used for fixing ur robot to ur_base -->
-  <joint name="ur_base" type="fixed">
-    <origin
-      xyz="0 0 0.714"
-      rpy="0 0 0" />
-    <parent link="ur_base_link" />
-    <child link="base_link" />
-  </joint>
-
+  <xacro:include filename="$(find ur_gripper_description)/urdf/gzplugin_grasp_fix.urdf.xacro"/>
+  <xacro:gzplugin_grasp_fix/>
 
 </robot>
