@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-  <node name="move_grasp_test" pkg="ur_gripper_manipulation" type="move_grasp_test.py" respawn="false" output="screen"/>
-
-
-</launch>
