@@ -31,7 +31,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud2
+    SyncSource: Image
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -66,29 +66,6 @@ Visualization Manager:
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
-        KinectSensor2_IR_RGB_kinect2_ir_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        KinectSensor2_IR_RGB_kinect2_ir_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        KinectSensor2_IR_RGB_kinect2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        KinectSensor2_IR_RGB_kinect2_rgb_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        KinectSensor2_IR_RGB_kinect2_rgb_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         KinectSensor2_kinect2_ir_link:
           Alpha: 1
           Show Axes: false
@@ -127,52 +104,22 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        finger_link1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger_link2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         forearm_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        gripper_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_finger1_finger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_finger1_finger_tip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_finger1_inner_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_finger1_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_finger2_finger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_finger2_finger_tip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_finger2_inner_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_finger2_knuckle_link:
+        gripper_body:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -187,11 +134,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
         upper_arm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -276,14 +218,14 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Flat Squares
-      Topic: /head_mount_kinect2/depth_registered/points
+      Topic: /kinect2/depth_registered/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /head_mount_kinect2/rgb/image_raw
+      Image Topic: /kinect2/rgb/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0

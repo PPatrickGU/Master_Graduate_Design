@@ -3,7 +3,7 @@
 
 # 导入ros的python依赖
 import rospy
-from ur_robotiq_sjtu_vision.msg import complex 
+from ur_gripper_vision.msg import complex 
 
 def my_publisher():
     # Ros 节点初始化

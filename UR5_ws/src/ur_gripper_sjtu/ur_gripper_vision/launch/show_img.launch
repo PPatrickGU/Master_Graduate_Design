@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>
+  <node name="show_img" pkg="ur_gripper_manipulation" type="show_img.py" respawn="false" output="screen"/>
+
+</launch>

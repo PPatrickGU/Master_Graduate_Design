@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="debug" default="false"/>
+  <arg name="limited" default="false" doc="If true, limits joint range [-PI, PI] on all joints." />
+  <arg name="rviz_config" default="$(find ur_gripper_manipulation)/config/ur_gripper.rviz"/>
+
+  <!-- send robot urdf to param server --> 
+  <include file="$(find ur_gripper_description)/launch/ur_gripper_realsense_upload.launch">  
+    <arg name="limited" value="$(arg limited)"/>
+  </include>
+
+  
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+
+  <!-- <include file="$(find ur_gripper_gazebo)/launch/controller_utils.launch"/>  -->
+
+
+  <include file="$(find ur_gripper_moveit_config)/launch/move_group.launch">
+    <arg name="debug" default="$(arg debug)" />
+  </include>
+
+  <include file="$(find ur_gripper_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="debug" default="$(arg debug)" />
+    <arg name="rviz_config" default="$(arg rviz_config)" />  
+  </include>
+
+</launch>
